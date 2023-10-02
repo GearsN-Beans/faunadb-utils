@@ -1,0 +1,25 @@
+{
+	"name": "faunadb-utils",
+	"version": "0.0.1",
+	"description": "Utility functions for interacting with faunadb",
+	"main": "index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"lint": "eslint . --ext .ts",
+		"format": "prettier --write ."
+	},
+	"keywords": [
+		"nosql",
+		"faunadb"
+	],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
+		"eslint": "^8.50.0",
+		"prettier": "^3.0.3",
+		"typescript": "^5.2.2"
+	}
+}
