@@ -50,7 +50,7 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - `deleteDocumentData` - Deletes a document in a collection.
 - `getCollectionDocDataAndIds` - Gets data from a single document in a collection with their ID.
 - `getRawCollectionData` - Gets all information from a single document in a collection in FaunaDB response format.
-- `getDataByIndex` - Gets data from a single document in a collection by a provided setup index.
+- `getDataByIndex` - Gets all matching document data by a provided setup index name and its term.
 
 ## Functions in Detail
 
@@ -60,6 +60,8 @@ Sets the FaunaDB secret for the client connection.
 
 ```javascript
 import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
+
+setFaunaSecret(process.env.FAUNADB_SECRET)
 ```
 
 ### `createNewDocument`
@@ -68,6 +70,11 @@ Creates a new document in a collection.
 
 ```javascript
 import { createNewDocument } from '@gearsnbeans/faunadb-utils'
+
+const data = { name: 'Name' } // The data to create the document with.
+const collection = 'myCollection' // The name of the collection to create the document in.
+
+createNewDocument(data, collection)
 ```
 
 ### `updateDocumentData`
