@@ -10,10 +10,11 @@
 	],
 	"keywords": [
 		"nosql",
-		"faunadb"
+		"faunadb",
+		"utilities"
 	],
 	"author": "Gears N' Beans",
-	"license": "ISC",
+	"license": "MIT",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup && cp README.md dist/README.md",
