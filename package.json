@@ -20,7 +20,8 @@
 		"build": "tsup && cp README.md dist/README.md",
 		"build:tsc": "tsc && cp README.md dist/README.md",
 		"lint": "eslint . --ext .ts",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"format:docs": "npx markdown-toc -i README.md"
 	},
 	"dependencies": {
 		"faunadb": "^4.8.0"
