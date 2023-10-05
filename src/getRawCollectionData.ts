@@ -1,5 +1,5 @@
 import { Paginate, Documents, Collection, Lambda, Get, Var, Map } from 'faunadb'
-import { faunaClient } from './faunaClient'
+import { faunaClient } from './setFaunaSecret'
 
 export const getRawCollectionDocData = async (
 	collection: string,

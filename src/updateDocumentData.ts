@@ -1,5 +1,5 @@
 import { Let, Ref, Collection, Get, Var, Select, Update } from 'faunadb'
-import { faunaClient } from './faunaClient'
+import { faunaClient } from './setFaunaSecret'
 
 export const updateDocumentData = async (
 	docId: string,

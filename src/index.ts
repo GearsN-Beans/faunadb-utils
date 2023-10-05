@@ -1,4 +1,4 @@
-import { setFaunaSecret } from './faunaClient'
+import { setFaunaSecret } from './setFaunaSecret'
 import { getCollectionDocDataAndIds } from './getCollectionDocDataAndIds'
 import { DocumentDataWithId } from './types/types'
 
