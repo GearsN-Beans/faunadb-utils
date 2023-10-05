@@ -9,13 +9,13 @@ A collection of utilities for working with FaunaDB.
 - [Features](#features)
 - [Functions at a Glance](#functions-at-a-glance)
 - [Functions in Detail](#functions-in-detail)
-  * [`setFaunaSecret`](#setfaunasecret)
-  * [`createNewDocument`](#createnewdocument)
-  * [`updateDocumentData`](#updatedocumentdata)
-  * [`deleteDocumentData`](#deletedocumentdata)
-  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  * [`getRawCollectionData`](#getrawcollectiondata)
-  * [`getDataByIndex`](#getdatabyindex)
+  - [`setFaunaSecret`](#setfaunasecret)
+  - [`createNewDocument`](#createnewdocument)
+  - [`updateDocumentData`](#updatedocumentdata)
+  - [`deleteDocumentData`](#deletedocumentdata)
+  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  - [`getRawCollectionData`](#getrawcollectiondata)
+  - [`getDataByIndex`](#getdatabyindex)
 
 <!-- tocstop -->
 
@@ -62,6 +62,28 @@ Sets the FaunaDB secret for the client connection.
 import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 
 setFaunaSecret(process.env.FAUNADB_SECRET)
+```
+
+```javascript
+// cloudflare workers example with itty-router
+import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
+
+const router = ittyRouter();
+
+router.get('/api', async (request, env) => {
+    return new Response('Hello World!');
+});
+
+const handleRequest = (request: Request, env: Env) => {
+	setFaunaSecret(env.FAUNA_SECRET);
+	return router.handle(request).then(corsify);
+};
+
+export default {
+	async fetch(request: Request, env: Env) {
+		return await handleRequest(request, env);
+    },
+};
 ```
 
 ### `createNewDocument`
