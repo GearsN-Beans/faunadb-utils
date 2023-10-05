@@ -1,25 +1,36 @@
 {
-	"name": "faunadb-utils",
+	"name": "@gearsnbeans/faunadb-utils",
 	"version": "0.0.1",
 	"description": "Utility functions for interacting with faunadb",
-	"main": "index.ts",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "tsc",
-		"lint": "eslint . --ext .ts",
-		"format": "prettier --write ."
-	},
+	"main": "dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"keywords": [
 		"nosql",
 		"faunadb"
 	],
-	"author": "",
+	"author": "Gears N' Beans",
 	"license": "ISC",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsup && cp README.md dist/README.md",
+		"build:tsc": "tsc && cp README.md dist/README.md",
+		"lint": "eslint . --ext .ts",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"faunadb": "^4.8.0"
+	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.7.3",
 		"@typescript-eslint/parser": "^6.7.3",
 		"eslint": "^8.50.0",
 		"prettier": "^3.0.3",
+		"ts-node": "^10.9.1",
+		"tsup": "^7.2.0",
 		"typescript": "^5.2.2"
 	}
 }
