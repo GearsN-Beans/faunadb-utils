@@ -9,13 +9,13 @@ A collection of utilities for working with FaunaDB.
 - [Features](#features)
 - [Functions at a Glance](#functions-at-a-glance)
 - [Functions in Detail](#functions-in-detail)
-  - [`setFaunaSecret`](#setfaunasecret)
-  - [`createNewDocument`](#createnewdocument)
-  - [`updateDocumentData`](#updatedocumentdata)
-  - [`deleteDocumentData`](#deletedocumentdata)
-  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  - [`getRawCollectionData`](#getrawcollectiondata)
-  - [`getDataByIndex`](#getdatabyindex)
+  * [`setFaunaSecret`](#setfaunasecret)
+  * [`createNewDocument`](#createnewdocument)
+  * [`updateDocumentData`](#updatedocumentdata)
+  * [`deleteDocumentData`](#deletedocumentdata)
+  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  * [`getRawCollectionData`](#getrawcollectiondata)
+  * [`getDataByIndex`](#getdatabyindex)
 
 <!-- tocstop -->
 
@@ -142,6 +142,23 @@ const size = 10 // The number of documents to get.
 getCollectionDocDataAndIds(collection, size)
 ```
 
+Returns an array of objects with the following structure:
+
+```javascript
+{
+    data: [
+        {
+            id: '1234567890',
+            data: {
+                name: 'Name'
+                exampleKey: 'exampleValue'
+            },
+            ts: 1693799240650000
+        }
+    ]
+}
+```
+
 ### `getRawCollectionData`
 
 Gets all information from a single document in a collection in FaunaDB response format.
@@ -155,12 +172,43 @@ const collection = 'myCollection' // The name of the collection to get the docum
 const size = 10 // The number of documents to get.
 // defaults to 1000
 
-getRawCollectionData(collection, size)
+const data = getRawCollectionData(collection, size)
+```
+
+Returns the raw response from FaunaDB.
+
+```javascript
+{
+  "data": [
+    {
+      "ref": {
+        "@ref": {
+          "id": "1234567890",
+          "collection": {
+            "@ref": {
+              "id": "CollectionName",
+              "collection": {
+                "@ref": {
+                  "id": "collections"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ts": 1693799240650000,
+      "data": {
+        "name": "Name",
+        "exampleKey": "exampleValue"
+      }
+    }
+  ]
+}
 ```
 
 ### `getDataByIndex`
 
-Gets all matching document data by a provided setup index name and its term.
+Gets all matching document data by a provided setup index name and its term. This is useful for getting a document by a unique index that is set up in FaunaDB.
 
 ```javascript
 import { getDataByIndex } from '@gearsnbeans/faunadb-utils'
@@ -169,5 +217,7 @@ const index = 'myIndex' // The name of the index to get the document from.
 
 const indexTerm = '12345' // The term to search for in the index. ex: userId
 
-getDataByIndex(index, indexTerm)
+const userData = getDataByIndex(index, indexTerm)
+// index example: 'userId'
+// indexTerm example: '12345'
 ```

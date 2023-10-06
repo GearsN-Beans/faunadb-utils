@@ -5,20 +5,7 @@ export interface DocumentDataWithId {
 export interface DocDataObj {
 	id: string
 	data: {
-		selectedDate: string
-		timesSelected: TimesSelected
-		positionChosen: string
-		userId: string
-		userFullName: string
-		clientId: string
-		messageForManager: string
-		isConfirmed: boolean
-		email: string
+		[key: string]: unknown
 	}
 	ts: number
-}
-
-export interface TimesSelected {
-	startTime: string
-	endTime: string
 }
