@@ -10,14 +10,14 @@ A collection of utilities for working with FaunaDB.
 - [Functions & Exports at a Glance](#functions--exports-at-a-glance)
 - [Functions & Exports in Detail](#functions--exports-in-detail)
 - [`faunaClient`](#faunaclient)
-  * [`setFaunaSecret`](#setfaunasecret)
-  * [`createNewDocument`](#createnewdocument)
-  * [`updateDocumentData`](#updatedocumentdata)
-  * [`deleteDocumentData`](#deletedocumentdata)
-  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  * [`getRawCollectionData`](#getrawcollectiondata)
-  * [`getDataByIndex`](#getdatabyindex)
-  * [`getRawDataByIndex`](#getrawdatabyindex)
+  - [`setFaunaSecret`](#setfaunasecret)
+  - [`createNewDocument`](#createnewdocument)
+  - [`updateDocumentData`](#updatedocumentdata)
+  - [`deleteDocumentData`](#deletedocumentdata)
+  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  - [`getRawCollectionData`](#getrawcollectiondata)
+  - [`getDataByIndex`](#getdatabyindex)
+  - [`getRawDataByIndex`](#getrawdatabyindex)
 
 <!-- tocstop -->
 
@@ -58,7 +58,7 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 
 ## Functions & Exports in Detail
 
-## `faunaClient`
+### `faunaClient`
 
 The FaunaDB client to be used with FQL queries.
 **_IMPORTANT:_** This is not necessary to use if you are setting up your own client. If using, make sure to set the secret with `setFaunaSecret` at a higher level than using `faunaClient`.
