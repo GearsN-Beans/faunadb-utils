@@ -5,3 +5,7 @@ dist/
 # Ignore test-related files
 /coverage.data
 /coverage/
+
+# markdown note files
+inspo.md
+TODOS.md

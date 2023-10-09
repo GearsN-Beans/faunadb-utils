@@ -19,6 +19,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup && cp README.md dist/README.md",
 		"build:tsc": "tsc && cp README.md dist/README.md",
+		"publish": "npm run build && npm publish",
 		"lint": "eslint . --ext .ts",
 		"format": "prettier --write .",
 		"format:docs": "npx markdown-toc -i README.md"
