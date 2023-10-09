@@ -7,8 +7,9 @@ A collection of utilities for working with FaunaDB.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Functions at a Glance](#functions-at-a-glance)
-- [Functions in Detail](#functions-in-detail)
+- [Functions & Exports at a Glance](#functions--exports-at-a-glance)
+- [Functions & Exports in Detail](#functions--exports-in-detail)
+- [`faunaClient`](#faunaclient)
   * [`setFaunaSecret`](#setfaunasecret)
   * [`createNewDocument`](#createnewdocument)
   * [`updateDocumentData`](#updatedocumentdata)
@@ -16,6 +17,7 @@ A collection of utilities for working with FaunaDB.
   * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
   * [`getRawCollectionData`](#getrawcollectiondata)
   * [`getDataByIndex`](#getdatabyindex)
+  * [`getRawDataByIndex`](#getrawdatabyindex)
 
 <!-- tocstop -->
 
@@ -42,8 +44,9 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - Getting Data by Index
 - Getting Raw Data provided by FaunaDB Response
 
-## Functions at a Glance
+## Functions & Exports at a Glance
 
+- `faunaClient` - The FaunaDB client.
 - `setFaunaSecret` - Sets the FaunaDB secret for the client connection.
 - `createNewDocument` - Creates a new document in a collection.
 - `updateDocumentData` - Updates a document in a collection.
@@ -51,17 +54,30 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - `getCollectionDocDataAndIds` - Gets data from a single document in a collection with their ID.
 - `getRawCollectionData` - Gets all information from a single document in a collection in FaunaDB response format.
 - `getDataByIndex` - Gets all matching document data by a provided setup index name and its term.
+- `getRawDataByIndex` - Gets all matching document data by a provided setup index name and its term in FaunaDB response format.
 
-## Functions in Detail
+## Functions & Exports in Detail
+
+## `faunaClient`
+
+The FaunaDB client to be used with FQL queries.
+**_IMPORTANT:_** This is not necessary to use if you are setting up your own client. If using, make sure to set the secret with `setFaunaSecret` at a higher level than using `faunaClient`.
+
+```javascript
+import { faunaClient } from '@gearsnbeans/faunadb-utils'
+
+faunaClient.query(q.Get(q.Ref(q.Collection('myCollection'), '1234567890')))
+```
 
 ### `setFaunaSecret`
 
 Sets the FaunaDB secret for the client connection.
+**IMPORTANT:** This must be called before any other functions are used as they rely on the client in this package, which gets set by this secret.
 
 ```javascript
 import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 
-setFaunaSecret(process.env.FAUNADB_SECRET)
+setFaunaSecret('fnAFCCznjeAATXszZR6chXVs0v4-8o5c3yn8mKcb')
 ```
 
 ```javascript
@@ -214,10 +230,22 @@ Gets all matching document data by a provided setup index name and its term. Thi
 import { getDataByIndex } from '@gearsnbeans/faunadb-utils'
 
 const index = 'myIndex' // The name of the index to get the document from.
-
 const indexTerm = '12345' // The term to search for in the index. ex: userId
 
 const userData = getDataByIndex(index, indexTerm)
 // index example: 'userId'
 // indexTerm example: '12345'
+```
+
+### `getRawDataByIndex`
+
+Gets all matching document data by a provided setup index name and its term in FaunaDB response format. This is useful for getting a document by a unique index that is set up in FaunaDB.
+
+```javascript
+import { getRawDataByIndex } from '@gearsnbeans/faunadb-utils'
+
+const index = 'dogBreed' // The name of the index to get the document from.
+const indexTerm = 'doberman' // The term to search for in the index. ex: userId
+
+const dobermmanData = getRawDataByIndex(index, indexTerm)
 ```
