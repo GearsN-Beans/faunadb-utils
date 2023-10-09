@@ -9,15 +9,15 @@ A collection of utilities for working with FaunaDB.
 - [Features](#features)
 - [Functions & Exports at a Glance](#functions--exports-at-a-glance)
 - [Functions & Exports in Detail](#functions--exports-in-detail)
-- [`faunaClient`](#faunaclient)
-  - [`setFaunaSecret`](#setfaunasecret)
-  - [`createNewDocument`](#createnewdocument)
-  - [`updateDocumentData`](#updatedocumentdata)
-  - [`deleteDocumentData`](#deletedocumentdata)
-  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  - [`getRawCollectionData`](#getrawcollectiondata)
-  - [`getDataByIndex`](#getdatabyindex)
-  - [`getRawDataByIndex`](#getrawdatabyindex)
+  * [`faunaClient`](#faunaclient)
+  * [`setFaunaSecret`](#setfaunasecret)
+  * [`createNewDocument`](#createnewdocument)
+  * [`updateDocumentData`](#updatedocumentdata)
+  * [`deleteDocumentData`](#deletedocumentdata)
+  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  * [`getRawCollectionData`](#getrawcollectiondata)
+  * [`getDataByIndex`](#getdatabyindex)
+  * [`getRawDataByIndex`](#getrawdatabyindex)
 
 <!-- tocstop -->
 
@@ -72,12 +72,12 @@ faunaClient.query(q.Get(q.Ref(q.Collection('myCollection'), '1234567890')))
 ### `setFaunaSecret`
 
 Sets the FaunaDB secret for the client connection.
-**IMPORTANT:** This must be called before any other functions are used as they rely on the client in this package, which gets set by this secret.
+**_IMPORTANT:_** This must be called before any other functions are used as they rely on the client in this package, which gets set by this secret.
 
 ```javascript
 import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 
-setFaunaSecret('fnAFCCznjeAATXszZR6chXVs0v4-8o5c3yn8mKcb')
+setFaunaSecret(process.env.FAUNA_SECRET)
 ```
 
 ```javascript
