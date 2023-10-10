@@ -16,13 +16,14 @@
 	"author": "Gears N' Beans",
 	"license": "MIT",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "vitest --run",
 		"build": "tsup && cp README.md dist/README.md",
 		"build:tsc": "tsc && cp README.md dist/README.md",
 		"publish": "npm run build && npm publish",
 		"lint": "eslint . --ext .ts",
 		"format": "prettier --write .",
-		"format:docs": "npx markdown-toc -i README.md"
+		"format:docs": "npx markdown-toc -i README.md",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"faunadb": "^4.8.0"
@@ -31,9 +32,12 @@
 		"@typescript-eslint/eslint-plugin": "^6.7.3",
 		"@typescript-eslint/parser": "^6.7.3",
 		"eslint": "^8.50.0",
+		"husky": "^8.0.0",
 		"prettier": "^3.0.3",
 		"ts-node": "^10.9.1",
 		"tsup": "^7.2.0",
-		"typescript": "^5.2.2"
+		"typescript": "^5.2.2",
+		"vite": "^4.4.11",
+		"vitest": "^0.34.6"
 	}
 }
