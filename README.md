@@ -18,6 +18,7 @@ A collection of utilities for working with FaunaDB.
   * [`getRawCollectionData`](#getrawcollectiondata)
   * [`getDataByIndex`](#getdatabyindex)
   * [`getRawDataByIndex`](#getrawdatabyindex)
+  * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
 
 <!-- tocstop -->
 
@@ -55,6 +56,7 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - `getRawCollectionData` - Gets all information from a single document in a collection in FaunaDB response format.
 - `getDataByIndex` - Gets all matching document data by a provided setup index name and its term.
 - `getRawDataByIndex` - Gets all matching document data by a provided setup index name and its term in FaunaDB response format.
+- `getDataByIndexWithValueSet` - Gets all matching document data by a provided setup index name and its term with a value set.
 
 ## Functions & Exports in Detail
 
@@ -249,3 +251,11 @@ const indexTerm = 'doberman' // The term to search for in the index. ex: userId
 
 const dobermmanData = getRawDataByIndex(index, indexTerm)
 ```
+
+### `getDataByIndexWithValueSet`
+
+Gets all matching document data by a provided setup index name and its term with a value set. This is useful for getting a document by a unique index that is set up in FaunaDB.
+
+The values field in FaunaDB specifies which document fields to return for matching entries.
+
+The key difference between this and `getDataByIndex` is that this function returns specific document fields configured from the collection instead of the entire document. The response is much more flexible and what is returned is based on the values set.

@@ -7,6 +7,7 @@ import { deleteDocumentData } from './deleteDocumentData'
 import { getDataByIndex } from './getDataByIndex'
 import { updateDocumentData } from './updateDocumentData'
 import { getRawDataByIndex } from './getRawDataByIndex'
+import { getDataByIndexWithValueSet } from './getDataByIndexWithValueSet'
 
 export {
 	faunaClient,
@@ -17,7 +18,8 @@ export {
 	deleteDocumentData,
 	getDataByIndex,
 	updateDocumentData,
-	getRawDataByIndex
+	getRawDataByIndex,
+	getDataByIndexWithValueSet
 }
 
 export type { DocumentDataWithId, DocDataObj }
