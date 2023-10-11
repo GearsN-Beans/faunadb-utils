@@ -8,6 +8,7 @@ import { getDataByIndexWithValueSet } from '../getDataByIndexWithValueSet'
 import { createNewDocument } from '../createNewDocument'
 import { deleteDocumentData } from '../deleteDocumentData'
 import { getRawDataById } from '../getRawDataById'
+import { updateDocumentData } from '../updateDocumentData'
 
 const faunaSecret = import.meta.env.VITE_FAUNA_SECRET
 describe('faunaClient', () => {
@@ -117,6 +118,31 @@ describe('all functions tests', () => {
 			)
 
 			expect(deletedProduct.ref.id).toEqual(createProduct.ref.id)
+		})
+	})
+
+	describe('updateDocumentData', () => {
+		test('should update a newly created document', async () => {
+			const newProduct = {
+				name: `testProduct ${Math.random() * 100}`,
+				price: Math.random() * 100,
+				quantity: 100
+			}
+
+			const createdProduct = await createNewDocument(newProduct, 'Product')
+
+			await updateDocumentData(
+				createdProduct.ref.id,
+				{ name: 'updatedProduct', newField: 'newField' },
+				'Product'
+			)
+
+			const getCreatedProduct = await getRawDataById(
+				'Product',
+				createdProduct.ref.id
+			)
+
+			expect(getCreatedProduct.data.name).toEqual('updatedProduct')
 		})
 	})
 })
