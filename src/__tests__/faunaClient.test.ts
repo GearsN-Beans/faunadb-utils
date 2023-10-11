@@ -10,6 +10,7 @@ import { deleteDocumentData } from '../deleteDocumentData'
 import { getRawDataById } from '../getRawDataById'
 import { updateDocumentData } from '../updateDocumentData'
 import { getDataByIndex } from '../getDataByIndex'
+import { getCollectionDocDataAndIds } from '../getCollectionDocDataAndIds'
 
 const faunaSecret = import.meta.env.VITE_FAUNA_SECRET
 describe('faunaClient', () => {
@@ -141,6 +142,24 @@ describe('all functions tests', () => {
 			expect(limeQuanitites.data[0]).toHaveProperty('data')
 			expect(limeQuanitites.data[0]).toHaveProperty('ts')
 			expect(limeQuanitites.data[0]).not.toHaveProperty('ref')
+		})
+	})
+
+	describe('getCollectionDocDataAndIds', () => {
+		test('should return an array of data containing objects with the correct fields', async () => {
+			const productData = await getCollectionDocDataAndIds('Product')
+
+			expect(productData.data.length).toBeGreaterThan(1)
+			expect(productData.data[0]).toHaveProperty('id')
+			expect(productData.data[0]).toHaveProperty('data')
+			expect(productData.data[0]).toHaveProperty('ts')
+			expect(productData.data[0]).not.toHaveProperty('ref')
+		})
+
+		test('should return an array of data containing objects with the correct length based on the size param', async () => {
+			const productData = await getCollectionDocDataAndIds('Product', 2)
+
+			expect(productData.data.length).toEqual(2)
 		})
 	})
 })
