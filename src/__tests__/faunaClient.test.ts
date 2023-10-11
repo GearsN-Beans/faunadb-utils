@@ -9,6 +9,7 @@ import { createNewDocument } from '../createNewDocument'
 import { deleteDocumentData } from '../deleteDocumentData'
 import { getRawDataById } from '../getRawDataById'
 import { updateDocumentData } from '../updateDocumentData'
+import { getDataByIndex } from '../getDataByIndex'
 
 const faunaSecret = import.meta.env.VITE_FAUNA_SECRET
 describe('faunaClient', () => {
@@ -129,6 +130,16 @@ describe('all functions tests', () => {
 
 			expect(updatedProduct.data.name).toEqual('updatedProduct')
 			expect(updatedProduct.data.quantity).toEqual(productQuantity + 1)
+		})
+	})
+
+	describe('getDataByIndex', () => {
+		test('should return an array of data based on the index and no designated values', async () => {
+			const limeQuanitites = await getDataByIndex('ProductName', 'limes')
+
+			expect(limeQuanitites.data[0]).toHaveProperty('id')
+			expect(limeQuanitites.data[0]).toHaveProperty('data')
+			expect(limeQuanitites.data[0]).toHaveProperty('ts')
 		})
 	})
 })
