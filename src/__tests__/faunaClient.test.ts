@@ -28,6 +28,12 @@ describe('all functions tests', () => {
 		setFaunaSecret(faunaSecret)
 	})
 
+	const newProduct = {
+		name: `testProduct ${Math.random() * 100}`,
+		price: Math.random() * 100,
+		quantity: Math.floor(Math.random() * 100)
+	}
+
 	describe('getRawCollectionDocData', () => {
 		test('should return an array of data', async () => {
 			const productData: RawDocumentRefs =
@@ -91,12 +97,6 @@ describe('all functions tests', () => {
 
 	describe('createNewDocument', () => {
 		test('should create a new document', async () => {
-			const newProduct = {
-				name: `testProduct ${Math.random() * 100}`,
-				price: Math.random() * 100,
-				quantity: 100
-			}
-
 			const createProduct = await createNewDocument(newProduct, 'Product')
 
 			expect(createProduct.data).toEqual(newProduct)
@@ -104,12 +104,6 @@ describe('all functions tests', () => {
 	})
 	describe('deleteDocumentData', () => {
 		test('should delete a newly created document', async () => {
-			const newProduct = {
-				name: `testProduct ${Math.random() * 100}`,
-				price: Math.random() * 100,
-				quantity: 100
-			}
-
 			const createProduct = await createNewDocument(newProduct, 'Product')
 
 			const deletedProduct = await deleteDocumentData(
@@ -122,27 +116,19 @@ describe('all functions tests', () => {
 	})
 
 	describe('updateDocumentData', () => {
-		test('should update a newly created document', async () => {
-			const newProduct = {
-				name: `testProduct ${Math.random() * 100}`,
-				price: Math.random() * 100,
-				quantity: 100
-			}
+		test('should update an existing document', async () => {
+			const productId = '378324093226713161'
+			const product = await getRawDataById('Product', productId)
+			const productQuantity = product.data.quantity as number
 
-			const createdProduct = await createNewDocument(newProduct, 'Product')
-
-			await updateDocumentData(
-				createdProduct.ref.id,
-				{ name: 'updatedProduct', newField: 'newField' },
+			const updatedProduct = await updateDocumentData(
+				productId,
+				{ name: 'updatedProduct', quantity: productQuantity + 1 },
 				'Product'
 			)
 
-			const getCreatedProduct = await getRawDataById(
-				'Product',
-				createdProduct.ref.id
-			)
-
-			expect(getCreatedProduct.data.name).toEqual('updatedProduct')
+			expect(updatedProduct.data.name).toEqual('updatedProduct')
+			expect(updatedProduct.data.quantity).toEqual(productQuantity + 1)
 		})
 	})
 })
