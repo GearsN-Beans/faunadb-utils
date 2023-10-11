@@ -1,9 +1,14 @@
 import { Paginate, Match, Index } from 'faunadb'
 import { faunaClient } from './setFaunaSecret'
+import { IndexResult } from './types/types'
 
 export const getDataByIndexWithValueSet = async (
 	index: string,
-	indexTerm: string
-) => {
-	return await faunaClient.query(Paginate(Match(Index(index), indexTerm)))
+	indexTerm?: string
+): Promise<IndexResult> => {
+	const indexQuery = indexTerm
+		? Match(Index(index), indexTerm)
+		: Match(Index(index))
+
+	return await faunaClient.query(Paginate(indexQuery))
 }
