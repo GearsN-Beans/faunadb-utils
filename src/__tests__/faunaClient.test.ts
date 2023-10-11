@@ -140,6 +140,7 @@ describe('all functions tests', () => {
 			expect(limeQuanitites.data[0]).toHaveProperty('id')
 			expect(limeQuanitites.data[0]).toHaveProperty('data')
 			expect(limeQuanitites.data[0]).toHaveProperty('ts')
+			expect(limeQuanitites.data[0]).not.toHaveProperty('ref')
 		})
 	})
 })
