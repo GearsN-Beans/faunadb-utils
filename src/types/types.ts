@@ -42,3 +42,11 @@ export interface RefObject {
 export interface IndexResult {
 	data: any[]
 }
+
+export interface SingleDocResult {
+	ref: RefObject
+	ts: number
+	data: {
+		[key: string]: unknown
+	}
+}
