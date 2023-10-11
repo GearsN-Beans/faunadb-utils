@@ -1,6 +1,12 @@
 import { faunaClient, setFaunaSecret } from './setFaunaSecret'
 import { getCollectionDocDataAndIds } from './getCollectionDocDataAndIds'
-import { DocDataObj, DocumentDataWithId } from './types/types'
+import {
+	DocDataObj,
+	DocumentDataWithId,
+	IndexResult,
+	RawDocumentRefs,
+	RefObject
+} from './types/types'
 import { getRawCollectionDocData } from './getRawCollectionData'
 import { createNewDocument } from './createNewDocument'
 import { deleteDocumentData } from './deleteDocumentData'
@@ -22,4 +28,10 @@ export {
 	getDataByIndexWithValueSet
 }
 
-export type { DocumentDataWithId, DocDataObj }
+export type {
+	DocumentDataWithId,
+	DocDataObj,
+	RawDocumentRefs,
+	RefObject,
+	IndexResult
+}
