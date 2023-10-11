@@ -1,7 +1,11 @@
 import { Collection, Create } from 'faunadb'
 import { faunaClient } from './setFaunaSecret'
+import { CreateDocResult } from './types/types'
 
-export const createNewDocument = async (data: unknown, collection: string) => {
+export const createNewDocument = async (
+	data: unknown,
+	collection: string
+): Promise<CreateDocResult> => {
 	return await faunaClient.query(
 		Create(Collection(collection), {
 			data
