@@ -19,6 +19,7 @@ A collection of utilities for working with FaunaDB.
   * [`getDataByIndex`](#getdatabyindex)
   * [`getRawDataByIndex`](#getrawdatabyindex)
   * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
+  * [`getRawDataById`](#getrawdatabyid)
 
 <!-- tocstop -->
 
@@ -57,6 +58,7 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - `getDataByIndex` - Gets all matching document data by a provided setup index name and its term.
 - `getRawDataByIndex` - Gets all matching document data by a provided setup index name and its term in FaunaDB response format.
 - `getDataByIndexWithValueSet` - Gets all matching document data by a provided setup index name and its term with a value set.
+- `getRawDataById` - Gets a single document by its ID in FaunaDB response format.
 
 ## Functions & Exports in Detail
 
@@ -164,16 +166,16 @@ Returns an array of objects with the following structure:
 
 ```javascript
 {
-    data: [
-        {
-            id: '1234567890',
-            data: {
-                name: 'Name'
-                exampleKey: 'exampleValue'
-            },
-            ts: 1693799240650000
-        }
-    ]
+	data: [
+		{
+			id: '1234567890',
+			data: {
+				name: 'Name',
+				exampleKey: 'exampleValue'
+			},
+			ts: 1693799240650000
+		}
+	]
 }
 ```
 
@@ -249,7 +251,7 @@ import { getRawDataByIndex } from '@gearsnbeans/faunadb-utils'
 const index = 'dogBreed' // The name of the index to get the document from.
 const indexTerm = 'doberman' // The term to search for in the index. ex: userId
 
-const dobermmanData = getRawDataByIndex(index, indexTerm)
+const dobermanData = getRawDataByIndex(index, indexTerm)
 ```
 
 ### `getDataByIndexWithValueSet`
@@ -259,3 +261,71 @@ Gets all matching document data by a provided setup index name and its term with
 The values field in FaunaDB specifies which document fields to return for matching entries.
 
 The key difference between this and `getDataByIndex` is that this function returns specific document fields configured from the collection instead of the entire document. The response is much more flexible and what is returned is based on the values set.
+
+```javascript
+// WITH an indexTerm set
+import { getDataByIndexWithValueSet } from '@gearsnbeans/faunadb-utils'
+
+const index = 'PhoneByClientName' // The name of the index to get the document from.
+const indexTerm = 'Brown' // The term field to search for in the index.
+
+const phoneData = getDataByIndexWithValueSet(index, indexTerm)
+
+// WITHOUT an indexTerm set
+
+const index = 'PhoneByClientName' // The name of the index to get the document from.
+
+const phoneData = getDataByIndexWithValueSet(index)
+```
+
+The response will vary depending on what fields you have set to return in FaunaDB but will always be in a data array:
+
+```javascript
+{
+	data: [
+		{
+			fieldName: 'fieldValue'
+		}
+	]
+}
+```
+
+### `getRawDataById`
+
+Gets a single document by its ID in FaunaDB response format.
+
+```javascript
+import { getRawDataById } from '@gearsnbeans/faunadb-utils'
+
+const docId = '1234567890' // The ID of the document to get.
+const collection = 'myCollection' // The name of the collection to get the document from.
+
+const data = getRawDataById(collection, docId)
+```
+
+Returns the raw response from FaunaDB.
+
+```javascript
+{
+  "ref": {
+    "@ref": {
+      "id": "1234567890",
+      "collection": {
+        "@ref": {
+          "id": "CollectionName",
+          "collection": {
+            "@ref": {
+              "id": "collections"
+            }
+          }
+        }
+      }
+    }
+  },
+  "ts": 1693799240650000,
+  "data": {
+    "name": "Name",
+    "exampleKey": "exampleValue"
+  }
+}
+```
