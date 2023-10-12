@@ -1,0 +1,35 @@
+name: Unit Test CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  FAUNA_SECRET: ${{ secrets.VITE_FAUNA_SECRET }}
+
+jobs:
+  test:
+    name: Unit Test CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log vars
+        run: |
+          echo $FAUNA_SECRET
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: NPM build
+        run: npm run build
+        env:
+          VITE_FAUNA_SECRET: ${{ secrets.VITE_FAUNA_SECRET }}
+
+      - name: Run tests
+        run: |
+          npm run test
+        env:
+          VITE_FAUNA_SECRET: ${{ secrets.VITE_FAUNA_SECRET }}
