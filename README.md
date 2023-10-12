@@ -1,5 +1,7 @@
 # faunadb-utils
 
+![Unit Tests](https://github.com/github/faunadb-utils/actions/workflows/main.yml/badge.svg)
+
 A collection of utilities for working with FaunaDB.
 
 <!-- toc -->
@@ -9,17 +11,17 @@ A collection of utilities for working with FaunaDB.
 - [Features](#features)
 - [Functions & Exports at a Glance](#functions--exports-at-a-glance)
 - [Functions & Exports in Detail](#functions--exports-in-detail)
-  * [`faunaClient`](#faunaclient)
-  * [`setFaunaSecret`](#setfaunasecret)
-  * [`createNewDocument`](#createnewdocument)
-  * [`updateDocumentData`](#updatedocumentdata)
-  * [`deleteDocumentData`](#deletedocumentdata)
-  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  * [`getRawCollectionData`](#getrawcollectiondata)
-  * [`getDataByIndex`](#getdatabyindex)
-  * [`getRawDataByIndex`](#getrawdatabyindex)
-  * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
-  * [`getRawDataById`](#getrawdatabyid)
+  - [`faunaClient`](#faunaclient)
+  - [`setFaunaSecret`](#setfaunasecret)
+  - [`createNewDocument`](#createnewdocument)
+  - [`updateDocumentData`](#updatedocumentdata)
+  - [`deleteDocumentData`](#deletedocumentdata)
+  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  - [`getRawCollectionData`](#getrawcollectiondata)
+  - [`getDataByIndex`](#getdatabyindex)
+  - [`getRawDataByIndex`](#getrawdatabyindex)
+  - [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
+  - [`getRawDataById`](#getrawdatabyid)
 
 <!-- tocstop -->
 
