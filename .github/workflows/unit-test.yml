@@ -24,7 +24,7 @@ jobs:
           node-version-file: .nvmrc
 
       - name: NPM build
-        run: npm run build
+        run: npm i tsup && npm run build
         env:
           VITE_FAUNA_SECRET: ${{ secrets.VITE_FAUNA_SECRET }}
 
