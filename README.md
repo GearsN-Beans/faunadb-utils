@@ -1,6 +1,6 @@
 # faunadb-utils
 
-![Unit Tests](https://github.com/github/faunadb-utils/actions/workflows/main.yml/badge.svg)
+![Unit Tests](https://github.com/GearsN-Beans/faunadb-utils/actions/workflows/unit-test.yml/badge.svg)
 
 A collection of utilities for working with FaunaDB.
 
