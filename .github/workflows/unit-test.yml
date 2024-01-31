@@ -7,8 +7,7 @@ on:
       - 'src/**'
       - 'tests/**'
       - 'package.json'
-    paths-ignore:
-      - '.github/**'
+      - '!.github/**'
 
   pull_request:
     branches: [main]
