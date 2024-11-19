@@ -4,6 +4,10 @@
 
 A collection of utilities for working with FaunaDB.
 
+<!-- add important note -->
+
+_Important to note that the package is split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025. The v10 version is the recommended version to use (WIP)._
+
 <!-- toc -->
 
 - [Installation](#installation)
@@ -18,7 +22,7 @@ A collection of utilities for working with FaunaDB.
   * [`updateDocumentData`](#updatedocumentdata)
   * [`deleteDocumentData`](#deletedocumentdata)
   * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  * [`getRawCollectionData`](#getrawcollectiondata)
+  * [`getRawCollectionDocData`](#getrawcollectiondocdata)
   * [`getDataByIndex`](#getdatabyindex)
   * [`getRawDataByIndex`](#getrawdatabyindex)
   * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
@@ -26,7 +30,7 @@ A collection of utilities for working with FaunaDB.
 - [Functions & Exports in Detail (FQL v10)](#functions--exports-in-detail-fql-v10)
   * [`faunaClientV10`](#faunaclientv10)
   * [`setFaunaSecretV10`](#setfaunasecretv10)
-  * [`getRawCollectionData`](#getrawcollectiondata-1)
+  * [`getRawCollectionData`](#getrawcollectiondata)
 
 <!-- tocstop -->
 
@@ -200,12 +204,12 @@ Returns an array of objects with the following structure:
 }
 ```
 
-### `getRawCollectionData`
+### `getRawCollectionDocData`
 
 Gets all information from a single document in a collection in FaunaDB response format.
 
 ```javascript
-import { getRawCollectionData } from '@gearsnbeans/faunadb-utils';
+import { getRawCollectionDocData } from '@gearsnbeans/faunadb-utils';
 
 const collection = 'myCollection'; // The name of the collection to get the document from.
 
@@ -213,7 +217,7 @@ const collection = 'myCollection'; // The name of the collection to get the docu
 const size = 10; // The number of documents to get.
 // defaults to 1000
 
-const data = getRawCollectionData(collection, size);
+const data = getRawCollectionDocData(collection, size);
 ```
 
 Returns the raw response from FaunaDB.
