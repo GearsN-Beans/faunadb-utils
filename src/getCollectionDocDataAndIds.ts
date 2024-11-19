@@ -7,17 +7,19 @@ import {
 	Get,
 	Var,
 	Map
-} from 'faunadb'
-import { faunaClient } from './setFaunaSecret'
-import { DocumentDataWithId } from './types/types'
+} from 'faunadb';
+import { faunaClient } from './setFaunaSecret';
+import { DocumentDataWithId } from './types/types';
 
 export const getCollectionDocDataAndIds = async (
 	collection: string,
 	size?: number
 ): Promise<DocumentDataWithId> => {
-	const defaultSize = 1000
-	const querySize = (size ||= defaultSize)
+	const defaultSize = 1000;
+	const querySize = (size ||= defaultSize);
 
+	// this will be different in v10, there is no data field
+	// https://docs.fauna.com/fauna/v4/migration/migrate-to-v10/#data-field
 	return await faunaClient.query(
 		Map(
 			Paginate(Documents(Collection(collection)), { size: querySize }),
@@ -28,5 +30,5 @@ export const getCollectionDocDataAndIds = async (
 				ts: Select(['ts'], Get(Var('ref')))
 			})
 		)
-	)
-}
+	);
+};
