@@ -3,11 +3,17 @@
 	"version": "0.0.5",
 	"description": "Utility functions for interacting with faunadb",
 	"main": "dist/index.js",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
+	"exports": {
+		".": {
+			"main": "./dist/index.js",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"keywords": [
 		"nosql",
 		"faunadb",
@@ -26,6 +32,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"fauna": "^2.3.0",
 		"faunadb": "^4.8.0"
 	},
 	"devDependencies": {
