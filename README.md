@@ -9,8 +9,9 @@ A collection of utilities for working with FaunaDB.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Functions & Exports at a Glance](#functions--exports-at-a-glance)
-- [Functions & Exports in Detail](#functions--exports-in-detail)
+- [Functions & Exports at a Glance (FQL v4)](#functions--exports-at-a-glance-fql-v4)
+- [Functions & Exports at a Glance (FQL v10)](#functions--exports-at-a-glance-fql-v10)
+- [Functions & Exports in Detail (FQL v4)](#functions--exports-in-detail-fql-v4)
   * [`faunaClient`](#faunaclient)
   * [`setFaunaSecret`](#setfaunasecret)
   * [`createNewDocument`](#createnewdocument)
@@ -22,6 +23,10 @@ A collection of utilities for working with FaunaDB.
   * [`getRawDataByIndex`](#getrawdatabyindex)
   * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
   * [`getRawDataById`](#getrawdatabyid)
+- [Functions & Exports in Detail (FQL v10)](#functions--exports-in-detail-fql-v10)
+  * [`faunaClientV10`](#faunaclientv10)
+  * [`setFaunaSecretV10`](#setfaunasecretv10)
+  * [`getRawCollectionData`](#getrawcollectiondata-1)
 
 <!-- tocstop -->
 
@@ -37,8 +42,14 @@ yarn add @gearsnbeans/faunadb-utils
 
 ## Usage
 
+_Important to note that the package is split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025. The v10 version is the recommended version to use (WIP)._
+
 ```javascript
-import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
+// * FQL v4 will be decommissioned on June 30, 2025 *
+import { setFaunaSecret } from '@gearsnbeans/faunadb-utils';
+
+// FQL v10
+import { setV10FaunaSecret } from '@gearsnbeans/faunadb-utils';
 ```
 
 ## Features
@@ -48,7 +59,9 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - Getting Data by Index
 - Getting Raw Data provided by FaunaDB Response
 
-## Functions & Exports at a Glance
+## Functions & Exports at a Glance (FQL v4)
+
+_soon to be deprecated v4 faunadb util usages:_
 
 - `faunaClient` - The FaunaDB client.
 - `setFaunaSecret` - Sets the FaunaDB secret for the client connection.
@@ -62,7 +75,13 @@ import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
 - `getDataByIndexWithValueSet` - Gets all matching document data by a provided setup index name and its term with a value set.
 - `getRawDataById` - Gets a single document by its ID in FaunaDB response format.
 
-## Functions & Exports in Detail
+## Functions & Exports at a Glance (FQL v10)
+
+- `faunaClientV10` - The FaunaDB client.
+- `setFaunaSecretV10` - Sets the FaunaDB secret for the client connection.
+- `getRawCollectionData` - Gets all or a set of Documents in a Collection in FaunaDB response format.
+
+## Functions & Exports in Detail (FQL v4)
 
 ### `faunaClient`
 
@@ -70,9 +89,9 @@ The FaunaDB client to be used with FQL queries.
 **_IMPORTANT:_** This is not necessary to use if you are setting up your own client. If using, make sure to set the secret with `setFaunaSecret` at a higher level than using `faunaClient`.
 
 ```javascript
-import { faunaClient } from '@gearsnbeans/faunadb-utils'
+import { faunaClient } from '@gearsnbeans/faunadb-utils';
 
-faunaClient.query(q.Get(q.Ref(q.Collection('myCollection'), '1234567890')))
+faunaClient.query(q.Get(q.Ref(q.Collection('myCollection'), '1234567890')));
 ```
 
 ### `setFaunaSecret`
@@ -81,9 +100,9 @@ Sets the FaunaDB secret for the client connection.
 **_IMPORTANT:_** This must be called before any other functions are used as they rely on the client in this package, which gets set by this secret.
 
 ```javascript
-import { setFaunaSecret } from '@gearsnbeans/faunadb-utils'
+import { setFaunaSecret } from '@gearsnbeans/faunadb-utils';
 
-setFaunaSecret(process.env.FAUNA_SECRET)
+setFaunaSecret(process.env.FAUNA_SECRET);
 ```
 
 ```javascript
@@ -113,12 +132,12 @@ export default {
 Creates a new document in a collection.
 
 ```javascript
-import { createNewDocument } from '@gearsnbeans/faunadb-utils'
+import { createNewDocument } from '@gearsnbeans/faunadb-utils';
 
-const data = { name: 'Name' } // The data to create the document with.
-const collection = 'myCollection' // The name of the collection to create the document in.
+const data = { name: 'Name' }; // The data to create the document with.
+const collection = 'myCollection'; // The name of the collection to create the document in.
 
-createNewDocument(data, collection)
+createNewDocument(data, collection);
 ```
 
 ### `updateDocumentData`
@@ -126,13 +145,13 @@ createNewDocument(data, collection)
 Updates a document in a collection.
 
 ```javascript
-import { updateDocumentData } from '@gearsnbeans/faunadb-utils'
+import { updateDocumentData } from '@gearsnbeans/faunadb-utils';
 
-const docId = '1234567890' // The ID of the document to update.
-const newData = { name: 'New Name' } // The new data to update the document with.
-const collection = 'myCollection' // The name of the collection to update the document in.
+const docId = '1234567890'; // The ID of the document to update.
+const newData = { name: 'New Name' }; // The new data to update the document with.
+const collection = 'myCollection'; // The name of the collection to update the document in.
 
-updateDocumentData(docId, newData, collection)
+updateDocumentData(docId, newData, collection);
 ```
 
 ### `deleteDocumentData`
@@ -140,12 +159,12 @@ updateDocumentData(docId, newData, collection)
 Deletes a document in a collection.
 
 ```javascript
-import { deleteDocumentData } from '@gearsnbeans/faunadb-utils'
+import { deleteDocumentData } from '@gearsnbeans/faunadb-utils';
 
-const docId = '1234567890' // The ID of the document to delete.
-const collection = 'myCollection' // The name of the collection to delete the document in.
+const docId = '1234567890'; // The ID of the document to delete.
+const collection = 'myCollection'; // The name of the collection to delete the document in.
 
-deleteDocumentData(docId, collection)
+deleteDocumentData(docId, collection);
 ```
 
 ### `getCollectionDocDataAndIds`
@@ -153,15 +172,15 @@ deleteDocumentData(docId, collection)
 Gets data from a single document in a collection with their ID.
 
 ```javascript
-import { getCollectionDocDataAndIds } from '@gearsnbeans/faunadb-utils'
+import { getCollectionDocDataAndIds } from '@gearsnbeans/faunadb-utils';
 
-const collection = 'myCollection' // The name of the collection to get the document from.
+const collection = 'myCollection'; // The name of the collection to get the document from.
 
 // OPTIONAL param for pagination
-const size = 10 // The number of documents to get.
+const size = 10; // The number of documents to get.
 // defaults to 1000
 
-getCollectionDocDataAndIds(collection, size)
+getCollectionDocDataAndIds(collection, size);
 ```
 
 Returns an array of objects with the following structure:
@@ -177,7 +196,7 @@ Returns an array of objects with the following structure:
 			},
 			ts: 1693799240650000
 		}
-	]
+	];
 }
 ```
 
@@ -186,15 +205,15 @@ Returns an array of objects with the following structure:
 Gets all information from a single document in a collection in FaunaDB response format.
 
 ```javascript
-import { getRawCollectionData } from '@gearsnbeans/faunadb-utils'
+import { getRawCollectionData } from '@gearsnbeans/faunadb-utils';
 
-const collection = 'myCollection' // The name of the collection to get the document from.
+const collection = 'myCollection'; // The name of the collection to get the document from.
 
 // OPTIONAL param for pagination
-const size = 10 // The number of documents to get.
+const size = 10; // The number of documents to get.
 // defaults to 1000
 
-const data = getRawCollectionData(collection, size)
+const data = getRawCollectionData(collection, size);
 ```
 
 Returns the raw response from FaunaDB.
@@ -233,12 +252,12 @@ Returns the raw response from FaunaDB.
 Gets all matching document data by a provided setup index name and its term. This is useful for getting a document by a unique index that is set up in FaunaDB.
 
 ```javascript
-import { getDataByIndex } from '@gearsnbeans/faunadb-utils'
+import { getDataByIndex } from '@gearsnbeans/faunadb-utils';
 
-const index = 'myIndex' // The name of the index to get the document from.
-const indexTerm = '12345' // The term to search for in the index. ex: userId
+const index = 'myIndex'; // The name of the index to get the document from.
+const indexTerm = '12345'; // The term to search for in the index. ex: userId
 
-const userData = getDataByIndex(index, indexTerm)
+const userData = getDataByIndex(index, indexTerm);
 // index example: 'userId'
 // indexTerm example: '12345'
 ```
@@ -248,12 +267,12 @@ const userData = getDataByIndex(index, indexTerm)
 Gets all matching document data by a provided setup index name and its term in FaunaDB response format. This is useful for getting a document by a unique index that is set up in FaunaDB.
 
 ```javascript
-import { getRawDataByIndex } from '@gearsnbeans/faunadb-utils'
+import { getRawDataByIndex } from '@gearsnbeans/faunadb-utils';
 
-const index = 'dogBreed' // The name of the index to get the document from.
-const indexTerm = 'doberman' // The term to search for in the index. ex: userId
+const index = 'dogBreed'; // The name of the index to get the document from.
+const indexTerm = 'doberman'; // The term to search for in the index. ex: userId
 
-const dobermanData = getRawDataByIndex(index, indexTerm)
+const dobermanData = getRawDataByIndex(index, indexTerm);
 ```
 
 ### `getDataByIndexWithValueSet`
@@ -266,18 +285,18 @@ The key difference between this and `getDataByIndex` is that this function retur
 
 ```javascript
 // WITH an indexTerm set
-import { getDataByIndexWithValueSet } from '@gearsnbeans/faunadb-utils'
+import { getDataByIndexWithValueSet } from '@gearsnbeans/faunadb-utils';
 
-const index = 'PhoneByClientName' // The name of the index to get the document from.
-const indexTerm = 'Brown' // The term field to search for in the index.
+const index = 'PhoneByClientName'; // The name of the index to get the document from.
+const indexTerm = 'Brown'; // The term field to search for in the index.
 
-const phoneData = getDataByIndexWithValueSet(index, indexTerm)
+const phoneData = getDataByIndexWithValueSet(index, indexTerm);
 
 // WITHOUT an indexTerm set
 
-const index = 'PhoneByClientName' // The name of the index to get the document from.
+const index = 'PhoneByClientName'; // The name of the index to get the document from.
 
-const phoneData = getDataByIndexWithValueSet(index)
+const phoneData = getDataByIndexWithValueSet(index);
 ```
 
 The response will vary depending on what fields you have set to return in FaunaDB but will always be in a data array:
@@ -288,7 +307,7 @@ The response will vary depending on what fields you have set to return in FaunaD
 		{
 			fieldName: 'fieldValue'
 		}
-	]
+	];
 }
 ```
 
@@ -297,12 +316,12 @@ The response will vary depending on what fields you have set to return in FaunaD
 Gets a single document by its ID in FaunaDB response format.
 
 ```javascript
-import { getRawDataById } from '@gearsnbeans/faunadb-utils'
+import { getRawDataById } from '@gearsnbeans/faunadb-utils';
 
-const docId = '1234567890' // The ID of the document to get.
-const collection = 'myCollection' // The name of the collection to get the document from.
+const docId = '1234567890'; // The ID of the document to get.
+const collection = 'myCollection'; // The name of the collection to get the document from.
 
-const data = getRawDataById(collection, docId)
+const data = getRawDataById(collection, docId);
 ```
 
 Returns the raw response from FaunaDB.
@@ -330,4 +349,66 @@ Returns the raw response from FaunaDB.
     "exampleKey": "exampleValue"
   }
 }
+```
+
+## Functions & Exports in Detail (FQL v10)
+
+### `faunaClientV10`
+
+The FaunaDB client to be used with FQL queries.
+**_IMPORTANT:_** This is not necessary to use if you are setting up your own client. If using, make sure to set the secret with `setFaunaSecretV10` at a higher level than using `faunaClientV10`.
+
+```javascript
+import { faunaClientV10 } from '@gearsnbeans/faunadb-utils';
+
+faunaClientV10.query(`Collection(${collectionName}).all()`);
+```
+
+### `setFaunaSecretV10`
+
+Sets the FaunaDB secret for the client connection.
+**_IMPORTANT:_** This must be called before any other functions are used as they rely on the client in this package, which gets set by this secret.
+
+```javascript
+import { setFaunaSecretV10 } from '@gearsnbeans/faunadb-utils';
+
+setFaunaSecretV10(process.env.FAUNA_SECRET);
+```
+
+```javascript
+// cloudflare workers example with itty-router
+
+import { setFaunaSecretV10 } from '@gearsnbeans/faunadb-utils'
+
+const router = ittyRouter();
+
+router.get('/api', async (request, env) => {
+    return new Response('Hello World!');
+});
+
+const handleRequest = (request: Request, env: Env) => {
+  setFaunaSecretV10(env.FAUNA_SECRET);
+  return router.handle(request).then(corsify);
+};
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return await handleRequest(request, env);
+  },
+};
+```
+
+### `getRawCollectionData`
+
+Gets all or a set of Documents in a Collection in FaunaDB response format.
+
+```javascript
+import { getRawCollectionData } from '@gearsnbeans/faunadb-utils';
+
+const collection = 'myCollection'; // The name of the collection to get the document from.
+
+// OPTIONAL param for pagination
+const size = 10; // The number of documents to get.
+
+const data = getRawCollectionData(collection, size);
 ```
