@@ -8,8 +8,6 @@ A collection of utilities for working with FaunaDB.
 
 > ---
 >
-> [!IMPORTANT]
->
 > ## _Important to note that the package is being split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025 as faunaDB (FQL v4) is being deprecated. The v10 version is the recommended version to use (WIP)._
 >
 > ---
@@ -22,21 +20,21 @@ A collection of utilities for working with FaunaDB.
 - [Functions & Exports at a Glance (FQL v4)](#functions--exports-at-a-glance-fql-v4)
 - [Functions & Exports at a Glance (FQL v10)](#functions--exports-at-a-glance-fql-v10)
 - [Functions & Exports in Detail (FQL v4)](#functions--exports-in-detail-fql-v4)
-  * [`faunaClient`](#faunaclient)
-  * [`setFaunaSecret`](#setfaunasecret)
-  * [`createNewDocument`](#createnewdocument)
-  * [`updateDocumentData`](#updatedocumentdata)
-  * [`deleteDocumentData`](#deletedocumentdata)
-  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  * [`getRawCollectionDocData`](#getrawcollectiondocdata)
-  * [`getDataByIndex`](#getdatabyindex)
-  * [`getRawDataByIndex`](#getrawdatabyindex)
-  * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
-  * [`getRawDataById`](#getrawdatabyid)
+  - [`faunaClient`](#faunaclient)
+  - [`setFaunaSecret`](#setfaunasecret)
+  - [`createNewDocument`](#createnewdocument)
+  - [`updateDocumentData`](#updatedocumentdata)
+  - [`deleteDocumentData`](#deletedocumentdata)
+  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  - [`getRawCollectionDocData`](#getrawcollectiondocdata)
+  - [`getDataByIndex`](#getdatabyindex)
+  - [`getRawDataByIndex`](#getrawdatabyindex)
+  - [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
+  - [`getRawDataById`](#getrawdatabyid)
 - [Functions & Exports in Detail (FQL v10)](#functions--exports-in-detail-fql-v10)
-  * [`faunaClientV10`](#faunaclientv10)
-  * [`setFaunaSecretV10`](#setfaunasecretv10)
-  * [`getRawCollectionData`](#getrawcollectiondata)
+  - [`faunaClientV10`](#faunaclientv10)
+  - [`setFaunaSecretV10`](#setfaunasecretv10)
+  - [`getRawCollectionData`](#getrawcollectiondata)
 
 <!-- tocstop -->
 
