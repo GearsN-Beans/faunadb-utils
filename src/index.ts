@@ -1,5 +1,5 @@
-import { faunaClient, setFaunaSecret } from './setFaunaSecret'
-import { getCollectionDocDataAndIds } from './getCollectionDocDataAndIds'
+import { faunaClient, setFaunaSecret } from './setFaunaSecret';
+import { getCollectionDocDataAndIds } from './getCollectionDocDataAndIds';
 import {
 	DocDataObj,
 	DocumentDataWithId,
@@ -7,15 +7,18 @@ import {
 	RawDocumentRefs,
 	RefObject,
 	SingleDocResult
-} from './types/types'
-import { getRawCollectionDocData } from './getRawCollectionData'
-import { createNewDocument } from './createNewDocument'
-import { deleteDocumentData } from './deleteDocumentData'
-import { getDataByIndex } from './getDataByIndex'
-import { updateDocumentData } from './updateDocumentData'
-import { getRawDataByIndex } from './getRawDataByIndex'
-import { getDataByIndexWithValueSet } from './getDataByIndexWithValueSet'
-import { getRawDataById } from './getRawDataById'
+} from './types/types';
+import { getRawCollectionDocData } from './getRawCollectionData';
+import { createNewDocument } from './createNewDocument';
+import { deleteDocumentData } from './deleteDocumentData';
+import { getDataByIndex } from './getDataByIndex';
+import { updateDocumentData } from './updateDocumentData';
+import { getRawDataByIndex } from './getRawDataByIndex';
+import { getDataByIndexWithValueSet } from './getDataByIndexWithValueSet';
+import { getRawDataById } from './getRawDataById';
+import { setFaunaSecretV10, faunaClientV10 } from './v10/setFaunaSecret';
+import { getRawCollectionData } from './v10/getRawCollectionData';
+import { RawCollectionData, RawDocument } from './types/v10';
 
 export {
 	faunaClient,
@@ -28,8 +31,12 @@ export {
 	updateDocumentData,
 	getRawDataByIndex,
 	getDataByIndexWithValueSet,
-	getRawDataById
-}
+	getRawDataById,
+	/* v10 below */
+	faunaClientV10,
+	setFaunaSecretV10,
+	getRawCollectionData
+};
 
 export type {
 	DocumentDataWithId,
@@ -37,5 +44,7 @@ export type {
 	RawDocumentRefs,
 	RefObject,
 	IndexResult,
-	SingleDocResult
-}
+	SingleDocResult,
+	RawCollectionData,
+	RawDocument
+};
