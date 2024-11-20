@@ -6,7 +6,13 @@ A collection of utilities for working with FaunaDB.
 
 <!-- add important note -->
 
-_Important to note that the package is split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025. The v10 version is the recommended version to use (WIP)._
+> ---
+>
+> [!IMPORTANT]
+>
+> ## _Important to note that the package is being split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025 as faunaDB (FQL v4) is being deprecated. The v10 version is the recommended version to use (WIP)._
+>
+> ---
 
 <!-- toc -->
 
