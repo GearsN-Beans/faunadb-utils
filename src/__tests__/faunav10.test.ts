@@ -22,22 +22,19 @@ describe('all functions tests', () => {
 		setFaunaSecretV10(faunaSecret);
 	});
 
-	describe('getRawCollectionDocData', () => {
+	describe('getRawCollectionData', () => {
 		test('should return an array of data', async () => {
 			const productData = await getRawCollectionData('Product');
-
 			expect(productData.data.data.length).toBeGreaterThan(0);
 		});
 
 		test('should return a correct length with the size param passed in', async () => {
 			const { data: productData } = await getRawCollectionData('Product', 1);
-
 			expect(productData.data).toHaveLength(1);
 		});
 
 		test('return an empty array with an empty collection', async () => {
 			const emptyCollectionData = await getRawCollectionData('EmptyCollection');
-
 			expect(emptyCollectionData.data.data).toHaveLength(0);
 		});
 	});
