@@ -1,6 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 import { faunaClientV10, setFaunaSecretV10 } from '../v10/setFaunaSecret';
 import { getRawCollectionData } from '../v10/getRawCollectionData';
+import { getRawDataById } from '../v10/getRawDataById';
 import { Client } from 'fauna';
 
 const faunaSecret = import.meta.env.VITE_V10_FAUNA_SECRET;
@@ -36,6 +37,17 @@ describe('all functions tests', () => {
 		test('return an empty array with an empty collection', async () => {
 			const emptyCollectionData = await getRawCollectionData('EmptyCollection');
 			expect(emptyCollectionData.data.data).toHaveLength(0);
+		});
+	});
+
+	describe('getRawDataById', () => {
+		test('v10 should return a single document', async () => {
+			const productId = '378217320570421325';
+
+			const singleProduct = await getRawDataById('Product', productId);
+
+			expect(singleProduct.data.id).toEqual(productId);
+			expect(singleProduct.data.name).toEqual('avocados');
 		});
 	});
 });

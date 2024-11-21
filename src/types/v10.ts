@@ -13,3 +13,7 @@ export interface RawDocument {
 	ts: number;
 	[key: string]: unknown;
 }
+
+export interface RawDocumentById {
+	data: RawDocument;
+}
