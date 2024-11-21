@@ -1,10 +1,11 @@
 import { fql } from 'fauna';
 import { faunaClientV10 } from './setFaunaSecret';
+import { PaginatedDocuments } from '../types/v10';
 
 export const getRawCollectionData = async (
 	collectionName: string,
 	size?: number
-) => {
+): Promise<PaginatedDocuments> => {
 	const defaultMaxSize = 16000;
 	const pageSize = size || defaultMaxSize;
 

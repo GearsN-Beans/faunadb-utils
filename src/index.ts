@@ -18,7 +18,11 @@ import { getDataByIndexWithValueSet } from './getDataByIndexWithValueSet';
 import { getRawDataById } from './getRawDataById';
 import { setFaunaSecretV10, faunaClientV10 } from './v10/setFaunaSecret';
 import { getRawCollectionData } from './v10/getRawCollectionData';
-import { RawCollectionData, RawDocument } from './types/v10';
+import {
+	RawCollectionData,
+	RawDocument,
+	PaginatedDocuments
+} from './types/v10';
 
 export {
 	faunaClient,
@@ -45,6 +49,8 @@ export type {
 	RefObject,
 	IndexResult,
 	SingleDocResult,
+	/* v10 below */
 	RawCollectionData,
-	RawDocument
+	RawDocument,
+	PaginatedDocuments
 };

@@ -1,4 +1,8 @@
 /* ------------- fauna v10 types ------------- */
+
+export interface PaginatedDocuments {
+	data: RawCollectionData;
+}
 export interface RawCollectionData {
 	data: RawDocument[];
 }
