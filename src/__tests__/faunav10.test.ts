@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 import { faunaClientV10, setFaunaSecretV10 } from '../v10/setFaunaSecret';
 import { getRawCollectionData } from '../v10/getRawCollectionData';
-import { getRawDataById } from '../v10/getRawDataById';
+import { getRawDocDataById } from '../v10/getRawDocDataById';
 import { Client } from 'fauna';
 
 const faunaSecret = import.meta.env.VITE_V10_FAUNA_SECRET;
@@ -44,14 +44,17 @@ describe('all functions tests', () => {
 		test('should return a single document by id', async () => {
 			const productId = '378217320570421325';
 
-			const singleProduct = await getRawDataById('Product', productId);
+			const singleProduct = await getRawDocDataById('Product', productId);
 
 			expect(singleProduct.data.id).toEqual(productId);
 			expect(singleProduct.data.name).toEqual('avocados');
 		});
 		test('should error with an invalid id', async () => {
 			const invalidId = '378217320570421324';
-			const singleProductResponse = await getRawDataById('Product', invalidId);
+			const singleProductResponse = await getRawDocDataById(
+				'Product',
+				invalidId
+			);
 
 			expect(singleProductResponse).toMatchObject({
 				data: { cause: 'not found' }

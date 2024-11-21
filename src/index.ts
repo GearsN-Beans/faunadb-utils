@@ -21,8 +21,10 @@ import { getRawCollectionData } from './v10/getRawCollectionData';
 import {
 	RawCollectionData,
 	RawDocument,
-	PaginatedDocuments
+	PaginatedDocuments,
+	RawDocumentById
 } from './types/v10';
+import { getRawDocDataById } from './v10/getRawDocDataById';
 
 export {
 	faunaClient,
@@ -39,7 +41,8 @@ export {
 	/* v10 below */
 	faunaClientV10,
 	setFaunaSecretV10,
-	getRawCollectionData
+	getRawCollectionData,
+	getRawDocDataById
 };
 
 export type {
@@ -52,5 +55,6 @@ export type {
 	/* v10 below */
 	RawCollectionData,
 	RawDocument,
-	PaginatedDocuments
+	PaginatedDocuments,
+	RawDocumentById
 };
