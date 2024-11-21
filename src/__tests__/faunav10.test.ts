@@ -41,13 +41,21 @@ describe('all functions tests', () => {
 	});
 
 	describe('getRawDataById', () => {
-		test('v10 should return a single document', async () => {
+		test('should return a single document by id', async () => {
 			const productId = '378217320570421325';
 
 			const singleProduct = await getRawDataById('Product', productId);
 
 			expect(singleProduct.data.id).toEqual(productId);
 			expect(singleProduct.data.name).toEqual('avocados');
+		});
+		test('should error with an invalid id', async () => {
+			const invalidId = '378217320570421324';
+			const singleProductResponse = await getRawDataById('Product', invalidId);
+
+			expect(singleProductResponse).toMatchObject({
+				data: { cause: 'not found' }
+			});
 		});
 	});
 });
