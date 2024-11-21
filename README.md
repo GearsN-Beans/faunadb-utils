@@ -20,21 +20,22 @@ A collection of utilities for working with FaunaDB.
 - [Functions & Exports at a Glance (FQL v4)](#functions--exports-at-a-glance-fql-v4)
 - [Functions & Exports at a Glance (FQL v10)](#functions--exports-at-a-glance-fql-v10)
 - [Functions & Exports in Detail (FQL v4)](#functions--exports-in-detail-fql-v4)
-  - [`faunaClient`](#faunaclient)
-  - [`setFaunaSecret`](#setfaunasecret)
-  - [`createNewDocument`](#createnewdocument)
-  - [`updateDocumentData`](#updatedocumentdata)
-  - [`deleteDocumentData`](#deletedocumentdata)
-  - [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
-  - [`getRawCollectionDocData`](#getrawcollectiondocdata)
-  - [`getDataByIndex`](#getdatabyindex)
-  - [`getRawDataByIndex`](#getrawdatabyindex)
-  - [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
-  - [`getRawDataById`](#getrawdatabyid)
+  * [`faunaClient`](#faunaclient)
+  * [`setFaunaSecret`](#setfaunasecret)
+  * [`createNewDocument`](#createnewdocument)
+  * [`updateDocumentData`](#updatedocumentdata)
+  * [`deleteDocumentData`](#deletedocumentdata)
+  * [`getCollectionDocDataAndIds`](#getcollectiondocdataandids)
+  * [`getRawCollectionDocData`](#getrawcollectiondocdata)
+  * [`getDataByIndex`](#getdatabyindex)
+  * [`getRawDataByIndex`](#getrawdatabyindex)
+  * [`getDataByIndexWithValueSet`](#getdatabyindexwithvalueset)
+  * [`getRawDataById`](#getrawdatabyid)
 - [Functions & Exports in Detail (FQL v10)](#functions--exports-in-detail-fql-v10)
-  - [`faunaClientV10`](#faunaclientv10)
-  - [`setFaunaSecretV10`](#setfaunasecretv10)
-  - [`getRawCollectionData`](#getrawcollectiondata)
+  * [`faunaClientV10`](#faunaclientv10)
+  * [`setFaunaSecretV10`](#setfaunasecretv10)
+  * [`getRawCollectionData`](#getrawcollectiondata)
+  * [`getRawDocDataById`](#getrawdocdatabyid)
 
 <!-- tocstop -->
 
@@ -88,6 +89,7 @@ _soon to be deprecated v4 faunadb util usages:_
 - `faunaClientV10` - The FaunaDB client.
 - `setFaunaSecretV10` - Sets the FaunaDB secret for the client connection.
 - `getRawCollectionData` - Gets all or a set of Documents in a Collection in FaunaDB response format.
+- `getRawDocDataById` - Gets a single document by its ID in FaunaDB response format.
 
 ## Functions & Exports in Detail (FQL v4)
 
@@ -418,5 +420,22 @@ const collection = 'myCollection'; // The name of the collection to get the docu
 // OPTIONAL param for pagination
 const size = 10; // The number of documents to get.
 
-const data = getRawCollectionData(collection, size);
+const data = await getRawCollectionData(collection, size);
 ```
+
+<!-- TODO add response example -->
+
+### `getRawDocDataById`
+
+Gets a single document by its ID in FaunaDB response format.
+
+```javascript
+import { getRawDocDataById } from '@gearsnbeans/faunadb-utils';
+
+const docId = '1234567890'; // The ID of the document to get.
+const collection = 'myCollection'; // The name of the collection to get the document from.
+
+const data = await getRawDocDataById(collection, docId);
+```
+
+<!-- TODO add response example -->
