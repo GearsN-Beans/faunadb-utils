@@ -1,6 +1,6 @@
-import { Let, Ref, Collection, Get, Var, Select, Update } from 'faunadb'
-import { faunaClient } from './setFaunaSecret'
-import { SingleDocResult } from './types/types'
+import { Let, Ref, Collection, Get, Var, Select, Update } from 'faunadb';
+import { SingleDocResult } from '../types/types';
+import { faunaClient } from './setFaunaSecret';
 
 export const updateDocumentData = async (
 	docId: string,
@@ -16,5 +16,5 @@ export const updateDocumentData = async (
 			},
 			Update(Var('documentRef'), { data: { ...newData } })
 		)
-	)
-}
+	);
+};

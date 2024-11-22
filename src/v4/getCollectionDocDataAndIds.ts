@@ -8,8 +8,8 @@ import {
 	Var,
 	Map
 } from 'faunadb';
+import { DocumentDataWithId } from '../types/types';
 import { faunaClient } from './setFaunaSecret';
-import { DocumentDataWithId } from './types/types';
 
 export const getCollectionDocDataAndIds = async (
 	collection: string,

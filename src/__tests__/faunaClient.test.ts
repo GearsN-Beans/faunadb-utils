@@ -1,16 +1,16 @@
 import { beforeEach, describe, expect, expectTypeOf, test } from 'vitest';
-import { faunaClient, setFaunaSecret } from '../setFaunaSecret';
-import { getRawCollectionDocData } from '../getRawCollectionData';
+import { faunaClient, setFaunaSecret } from '../v4/setFaunaSecret';
 import { Client } from 'faunadb';
 import { RawDocumentRefs } from '../types/types';
-import { getRawDataByIndex } from '../getRawDataByIndex';
-import { getDataByIndexWithValueSet } from '../getDataByIndexWithValueSet';
-import { createNewDocument } from '../createNewDocument';
-import { deleteDocumentData } from '../deleteDocumentData';
-import { getRawDataById } from '../getRawDataById';
-import { updateDocumentData } from '../updateDocumentData';
-import { getDataByIndex } from '../getDataByIndex';
-import { getCollectionDocDataAndIds } from '../getCollectionDocDataAndIds';
+import { createNewDocument } from '../v4/createNewDocument';
+import { deleteDocumentData } from '../v4/deleteDocumentData';
+import { getCollectionDocDataAndIds } from '../v4/getCollectionDocDataAndIds';
+import { getDataByIndex } from '../v4/getDataByIndex';
+import { getDataByIndexWithValueSet } from '../v4/getDataByIndexWithValueSet';
+import { getRawCollectionDocData } from '../v4/getRawCollectionData';
+import { getRawDataById } from '../v4/getRawDataById';
+import { getRawDataByIndex } from '../v4/getRawDataByIndex';
+import { updateDocumentData } from '../v4/updateDocumentData';
 
 const faunaSecret = import.meta.env.VITE_FAUNA_SECRET;
 describe('faunaClient', () => {

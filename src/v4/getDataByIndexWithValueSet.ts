@@ -1,6 +1,6 @@
 import { Paginate, Match, Index } from 'faunadb';
+import { IndexResult } from '../types/types';
 import { faunaClient } from './setFaunaSecret';
-import { IndexResult } from './types/types';
 
 // FQL v4
 export const getDataByIndexWithValueSet = async (

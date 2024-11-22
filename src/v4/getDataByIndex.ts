@@ -1,6 +1,6 @@
-import { Paginate, Match, Index, Lambda, Select, Get, Var, Map } from 'faunadb'
-import { faunaClient } from './setFaunaSecret'
-import { DocumentDataWithId } from './types/types'
+import { Paginate, Match, Index, Lambda, Select, Get, Var, Map } from 'faunadb';
+import { DocumentDataWithId } from '../types/types';
+import { faunaClient } from './setFaunaSecret';
 
 export const getDataByIndex = async (
 	index: string,
@@ -19,5 +19,5 @@ export const getDataByIndex = async (
 				ts: Select(['ts'], Get(Var('ref')))
 			})
 		)
-	)
-}
+	);
+};

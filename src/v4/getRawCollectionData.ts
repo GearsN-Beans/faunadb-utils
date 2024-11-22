@@ -7,8 +7,8 @@ import {
 	Var,
 	Map
 } from 'faunadb';
+import { RawDocumentRefs } from '../types/types';
 import { faunaClient } from './setFaunaSecret';
-import { RawDocumentRefs } from './types/types';
 
 export const getRawCollectionDocData = async (
 	collection: string,

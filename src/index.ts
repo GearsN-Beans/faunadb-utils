@@ -1,5 +1,4 @@
-import { faunaClient, setFaunaSecret } from './setFaunaSecret';
-import { getCollectionDocDataAndIds } from './getCollectionDocDataAndIds';
+import { faunaClient, setFaunaSecret } from './v4/setFaunaSecret';
 import {
 	DocDataObj,
 	DocumentDataWithId,
@@ -8,14 +7,6 @@ import {
 	RefObject,
 	SingleDocResult
 } from './types/types';
-import { getRawCollectionDocData } from './getRawCollectionData';
-import { createNewDocument } from './createNewDocument';
-import { deleteDocumentData } from './deleteDocumentData';
-import { getDataByIndex } from './getDataByIndex';
-import { updateDocumentData } from './updateDocumentData';
-import { getRawDataByIndex } from './getRawDataByIndex';
-import { getDataByIndexWithValueSet } from './getDataByIndexWithValueSet';
-import { getRawDataById } from './getRawDataById';
 import { setFaunaSecretV10, faunaClientV10 } from './v10/setFaunaSecret';
 import { getRawCollectionData } from './v10/getRawCollectionData';
 import {
@@ -25,6 +16,15 @@ import {
 	RawDocumentById
 } from './types/v10';
 import { getRawDocDataById } from './v10/getRawDocDataById';
+import { createNewDocument } from './v4/createNewDocument';
+import { deleteDocumentData } from './v4/deleteDocumentData';
+import { getCollectionDocDataAndIds } from './v4/getCollectionDocDataAndIds';
+import { getDataByIndex } from './v4/getDataByIndex';
+import { getDataByIndexWithValueSet } from './v4/getDataByIndexWithValueSet';
+import { getRawCollectionDocData } from './v4/getRawCollectionData';
+import { getRawDataById } from './v4/getRawDataById';
+import { getRawDataByIndex } from './v4/getRawDataByIndex';
+import { updateDocumentData } from './v4/updateDocumentData';
 
 export {
 	faunaClient,

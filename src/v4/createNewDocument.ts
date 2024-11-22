@@ -1,6 +1,6 @@
-import { Collection, Create } from 'faunadb'
-import { faunaClient } from './setFaunaSecret'
-import { SingleDocResult } from './types/types'
+import { Collection, Create } from 'faunadb';
+import { SingleDocResult } from '../types/types';
+import { faunaClient } from './setFaunaSecret';
 
 export const createNewDocument = async (
 	data: unknown,
@@ -10,5 +10,5 @@ export const createNewDocument = async (
 		Create(Collection(collection), {
 			data
 		})
-	)
-}
+	);
+};

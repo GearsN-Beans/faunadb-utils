@@ -1,6 +1,6 @@
-import { Paginate, Match, Index, Lambda, Get, Var, Map } from 'faunadb'
-import { faunaClient } from './setFaunaSecret'
-import { RawDocumentRefs } from './types/types'
+import { Paginate, Match, Index, Lambda, Get, Var, Map } from 'faunadb';
+import { RawDocumentRefs } from '../types/types';
+import { faunaClient } from './setFaunaSecret';
 
 export const getRawDataByIndex = async (
 	index: string,
@@ -8,5 +8,5 @@ export const getRawDataByIndex = async (
 ): Promise<RawDocumentRefs> => {
 	return await faunaClient.query(
 		Map(Paginate(Match(Index(index), indexTerm)), Lambda('X', Get(Var('X'))))
-	)
-}
+	);
+};
