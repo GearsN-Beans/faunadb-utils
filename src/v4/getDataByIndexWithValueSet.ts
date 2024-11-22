@@ -1,5 +1,5 @@
 import { Paginate, Match, Index } from 'faunadb';
-import { IndexResult } from '../types/types';
+import { IndexResult } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
 // FQL v4

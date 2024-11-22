@@ -1,5 +1,5 @@
 import { Delete, Ref, Collection } from 'faunadb';
-import { SingleDocResult } from '../types/types';
+import { SingleDocResult } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
 export const deleteDocumentData = async (

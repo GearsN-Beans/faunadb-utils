@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, expectTypeOf, test } from 'vitest';
 import { faunaClient, setFaunaSecret } from '../v4/setFaunaSecret';
 import { Client } from 'faunadb';
-import { RawDocumentRefs } from '../types/types';
+import { RawDocumentRefs } from '../types/v4';
 import { createNewDocument } from '../v4/createNewDocument';
 import { deleteDocumentData } from '../v4/deleteDocumentData';
 import { getCollectionDocDataAndIds } from '../v4/getCollectionDocDataAndIds';

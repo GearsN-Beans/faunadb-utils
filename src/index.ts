@@ -6,7 +6,7 @@ import {
 	RawDocumentRefs,
 	RefObject,
 	SingleDocResult
-} from './types/types';
+} from './types/v4';
 import { setFaunaSecretV10, faunaClientV10 } from './v10/setFaunaSecret';
 import { getRawCollectionData } from './v10/getRawCollectionData';
 import {

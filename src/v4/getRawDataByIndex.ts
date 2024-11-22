@@ -1,5 +1,5 @@
 import { Paginate, Match, Index, Lambda, Get, Var, Map } from 'faunadb';
-import { RawDocumentRefs } from '../types/types';
+import { RawDocumentRefs } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
 export const getRawDataByIndex = async (
