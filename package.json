@@ -1,6 +1,6 @@
 {
 	"name": "@gearsnbeans/faunadb-utils",
-	"version": "0.0.5",
+	"version": "0.1.0",
 	"description": "Utility functions for interacting with faunadb",
 	"main": "dist/index.js",
 	"files": [
