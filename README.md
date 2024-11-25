@@ -78,7 +78,7 @@ _soon to be deprecated v4 faunadb util usages:_
 - `updateDocumentData` - Updates a document in a collection.
 - `deleteDocumentData` - Deletes a document in a collection.
 - `getCollectionDocDataAndIds` - Gets data from a single document in a collection with their ID.
-- `getRawCollectionData` - Gets all information from a single document in a collection in FaunaDB response format.
+- `getRawCollectionDocData` - Gets all information from a single document in a collection in FaunaDB response format.
 - `getDataByIndex` - Gets all matching document data by a provided setup index name and its term.
 - `getRawDataByIndex` - Gets all matching document data by a provided setup index name and its term in FaunaDB response format.
 - `getDataByIndexWithValueSet` - Gets all matching document data by a provided setup index name and its term with a value set.
