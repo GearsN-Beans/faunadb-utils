@@ -2,6 +2,11 @@ import { fql } from 'fauna';
 import { faunaClientV10 } from './setFaunaSecret';
 import { PaginatedDocuments } from '../types/v10';
 
+/**
+ * FQL v10
+ * @param collectionName
+ * @param size optional param
+ */
 export const getRawCollectionData = async (
 	collectionName: string,
 	size?: number
