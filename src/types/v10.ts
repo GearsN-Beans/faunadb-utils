@@ -11,6 +11,7 @@ export interface RawDocument {
 	coll: string;
 	id: string;
 	ts: number;
+	ttl?: number; // deleted doc timestamp
 	[key: string]: unknown;
 }
 
