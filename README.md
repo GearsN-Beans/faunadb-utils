@@ -58,7 +58,7 @@ _Important to note that the package is split into two versions, one for FQL v4 a
 import { setFaunaSecret } from '@gearsnbeans/faunadb-utils';
 
 // FQL v10
-import { setV10FaunaSecret } from '@gearsnbeans/faunadb-utils';
+import { setFaunaSecretV10 } from '@gearsnbeans/faunadb-utils';
 ```
 
 ## Features
