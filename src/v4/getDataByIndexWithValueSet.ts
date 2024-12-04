@@ -2,7 +2,11 @@ import { Paginate, Match, Index } from 'faunadb';
 import { IndexResult } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
-// FQL v4
+/**
+ * FQL v4
+ * @param index string
+ * @param indexTerm optional string
+ */
 export const getDataByIndexWithValueSet = async (
 	index: string,
 	indexTerm?: string

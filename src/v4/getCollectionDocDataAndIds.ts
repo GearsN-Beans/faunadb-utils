@@ -11,6 +11,13 @@ import {
 import { DocumentDataWithId } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
+// NOTE v10 automatically returns the id, so no need to recreate this one
+
+/**
+ * FQL v4
+ * @param collection string
+ * @param size optional number
+ */
 export const getCollectionDocDataAndIds = async (
 	collection: string,
 	size?: number

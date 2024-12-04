@@ -2,6 +2,11 @@ import { Paginate, Match, Index, Lambda, Get, Var, Map } from 'faunadb';
 import { RawDocumentRefs } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
+/**
+ * FQL v4
+ * @param index
+ * @param indexTerm
+ */
 export const getRawDataByIndex = async (
 	index: string,
 	indexTerm: string

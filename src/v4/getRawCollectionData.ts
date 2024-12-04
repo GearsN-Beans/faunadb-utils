@@ -10,6 +10,11 @@ import {
 import { RawDocumentRefs } from '../types/v4';
 import { faunaClient } from './setFaunaSecret';
 
+/**
+ * FQL v4
+ * @param collection
+ * @param size optional number
+ */
 export const getRawCollectionDocData = async (
 	collection: string,
 	size?: number
