@@ -1,6 +1,6 @@
 {
 	"name": "@gearsnbeans/faunadb-utils",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Utility functions for interacting with faunadb",
 	"main": "dist/index.js",
 	"files": [
@@ -25,7 +25,7 @@
 		"test": "vitest --run",
 		"build": "tsup && cp README.md dist/README.md",
 		"build:tsc": "tsc && cp README.md dist/README.md",
-		"publish": "npm run build && npm publish",
+		"publish": "npm publish",
 		"lint": "eslint . --ext .ts",
 		"format": "prettier --write .",
 		"format:docs": "npx markdown-toc -i README.md",
