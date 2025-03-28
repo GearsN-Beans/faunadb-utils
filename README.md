@@ -4,11 +4,15 @@
 
 A collection of utilities for working with FaunaDB.
 
+# _DEPRECATED_
+
 <!-- add important note -->
 
 > ---
 >
-> ## _Important to note that the package is being split into two versions, one for FQL v4 and one for FQL v10. The v4 version will be decommissioned on June 30, 2025 as faunaDB (FQL v4) is being deprecated. The v10 version is the recommended version to use after June 30, 2025 or if you have started using the FaunaDB v10 dashboard (WIP)._
+> ## This package will halt development as the FaunaDB service is ending on May 30, 2025: [FaunaDB Service Deprecation Notice](https://fauna.com/deprecation-notice)
+>
+> In the possibility that faunadb continues through their open source release, this package may become active again.
 >
 > ---
 
